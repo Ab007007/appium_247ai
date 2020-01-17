@@ -2,6 +2,7 @@ package com.ai.appium.basics.utils;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -30,6 +31,7 @@ public class DriverUtils {
 				new AndroidDriver<AndroidElement>
 		(new URL("http://127.0.0.1:4723/wd/hub"), cap);
 		
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		return driver;
 	}
 	
@@ -57,4 +59,8 @@ public class DriverUtils {
 		return driver;
 	}
 
+	
+	
+	
+	
 }
