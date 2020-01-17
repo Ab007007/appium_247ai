@@ -1,5 +1,6 @@
 package com.ai.appium.basics.utils;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
@@ -21,12 +22,34 @@ public class DriverUtils {
 	 */
 	public static AndroidDriver<AndroidElement> getMyDriver() throws MalformedURLException
 	{
+		File f  = new File("app\\ApiDemos-debug.apk");
 		DesiredCapabilities cap = new DesiredCapabilities();
 		cap.setCapability(MobileCapabilityType.DEVICE_NAME, "Pixel");
-		cap.setCapability("appPackage", "io.appium.android.apis");
-		cap.setCapability("appActivity", "io.appium.android.apis.ApiDemos");
+//		cap.setCapability("appPackage", "io.appium.android.apis");
+//		cap.setCapability("appActivity", "io.appium.android.apis.ApiDemos");
+		cap.setCapability(MobileCapabilityType.APP, f.getAbsolutePath());
+		
 		cap.setCapability(MobileCapabilityType.UDID, "emulator-5554");
 		
+		AndroidDriver<AndroidElement> driver=
+				new AndroidDriver<AndroidElement>
+		(new URL("http://127.0.0.1:4723/wd/hub"), cap);
+		
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		return driver;
+	}
+	
+	
+	
+	
+	
+	
+	public static AndroidDriver<AndroidElement> getMyBrowserDriver(String udid) throws MalformedURLException
+	{
+		DesiredCapabilities cap = new DesiredCapabilities();
+		cap.setCapability(MobileCapabilityType.DEVICE_NAME, "Android");
+		cap.setCapability(MobileCapabilityType.UDID, udid);
+		cap.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
 		AndroidDriver<AndroidElement> driver=
 				new AndroidDriver<AndroidElement>
 		(new URL("http://127.0.0.1:4723/wd/hub"), cap);
@@ -51,6 +74,7 @@ public class DriverUtils {
 		cap.setCapability("appPackage", pkgName );
 		cap.setCapability("appActivity", activityName);
 		cap.setCapability(MobileCapabilityType.UDID, udid);
+	//	cap.setCapability("autoAcceptAlerts", true);
 		
 		AndroidDriver<AndroidElement> driver=
 				new AndroidDriver<AndroidElement>

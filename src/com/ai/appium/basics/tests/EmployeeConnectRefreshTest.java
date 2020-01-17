@@ -1,4 +1,4 @@
-package com.ai.appium.basics.touchactions;
+package com.ai.appium.basics.tests;
 
 import java.net.MalformedURLException;
 import java.time.Duration;
@@ -17,7 +17,7 @@ import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 
-public class SwipeFromRightToLeft 
+public class EmployeeConnectRefreshTest 
 {
 	public static void main(String[] args) throws MalformedURLException, InterruptedException {
 		
@@ -46,11 +46,14 @@ public class SwipeFromRightToLeft
 		
 		element.click();
 		Thread.sleep(5000);
-			
+		driver.findElementByAndroidUIAutomator("text(\"NOTIFICATIONS\")").click();
+		
+		Thread.sleep(6000);
+		
 		Dimension size =  driver.manage().window().getSize();
 		System.out.println("Calling swipe");
 		
-		swipeTopToBottom(driver, size);
+		swipeleftToRight(driver, size);
 		System.out.println("Ending swipe");
 		
 		System.out.println("End");
