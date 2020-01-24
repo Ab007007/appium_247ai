@@ -6,7 +6,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.ss.examples.CellStyleDetails;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -19,14 +21,17 @@ public class ExcelUtils {
 	public static void writeToExcel(String sheetName, int rowNumber, int columnNumber, String value)
 			throws EncryptedDocumentException, IOException {
 		File file = new File(filePath);
-		FileOutputStream fos = new FileOutputStream(file, true);
+		FileInputStream fis = new FileInputStream(file);
+		Workbook wb = WorkbookFactory.create(fis);
+		
+		FileOutputStream fos = new FileOutputStream(file);
 
-		Workbook wb = WorkbookFactory.create(fos);
 		Sheet sheet = wb.getSheet(sheetName);
 		Row row = sheet.getRow(rowNumber);
 		row.createCell(columnNumber).setCellValue(value);
 
 		wb.write(fos);
+		fos.flush();
 		fos.close();
 		fos = null;
 

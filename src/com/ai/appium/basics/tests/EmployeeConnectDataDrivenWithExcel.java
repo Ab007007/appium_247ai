@@ -32,6 +32,7 @@ public class EmployeeConnectDataDrivenWithExcel {
 			username = ExcelUtils.getExcelCellValue(sheetName, i, 0);
 			password = ExcelUtils.getExcelCellValue(sheetName, i, 1);
 
+			ExcelUtils.writeToExcel(sheetName, i, 2, "PASS");
 			EmployeeConnectUtils.login(driver, username, password);
 			//validate i'm on home page
 			
