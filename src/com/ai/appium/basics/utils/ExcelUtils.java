@@ -13,9 +13,13 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 public class ExcelUtils {
 	
+	public static final String filePath = "data\\testdata.xls";
+	
+	
+	
 	public static void main(String[] args) throws EncryptedDocumentException, IOException {
 		
-		File file  =  new File("data\\testdata.xls");
+		File file  =  new File(filePath);
 		FileInputStream fis = new FileInputStream(file);
 		Workbook wb = WorkbookFactory.create(fis);
 		Sheet sheet = wb.getSheet("sampledata");
@@ -25,14 +29,14 @@ public class ExcelUtils {
 		System.out.println(rowCount);
 		
 		Row row = null;
-		Cell fn = null;
-		Cell ln = null;
+		String fn = null;
+		String ln = null;
 		
 		for (int i = 0; i <rowCount; i++) {
 			
 			row = sheet.getRow(i);
-			fn = row.getCell(0);
-			ln = row.getCell(1);
+			fn = row.getCell(0).getStringCellValue();
+			ln = row.getCell(1).getStringCellValue();
 			
 			System.out.println(fn + " - " + ln);
 			

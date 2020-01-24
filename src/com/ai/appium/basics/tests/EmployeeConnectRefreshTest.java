@@ -25,7 +25,7 @@ public class EmployeeConnectRefreshTest
 //		AndroidDriver<AndroidElement> driver = DriverUtils.getMyDriver("com.IS247.Notifier",
 //		"md53d9dcf7c5801421ba53cb8bb04e2d9b2.SplashView","RZ8M90TM71K");
 		AndroidDriver<AndroidElement> driver = DriverUtils.getMyDriver("com.IS247.Notifier",
-		"md53d9dcf7c5801421ba53cb8bb04e2d9b2.SplashView","RZ8M90TM71K");
+		"md53d9dcf7c5801421ba53cb8bb04e2d9b2.SplashView","emulator-5554");
 		
 		Thread.sleep(6000);
 		
