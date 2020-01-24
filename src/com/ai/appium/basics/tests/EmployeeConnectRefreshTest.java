@@ -53,63 +53,13 @@ public class EmployeeConnectRefreshTest
 		Dimension size =  driver.manage().window().getSize();
 		System.out.println("Calling swipe");
 		
-		swipeleftToRight(driver, size);
+		DriverUtils.swipeleftToRight(driver, size);
 		System.out.println("Ending swipe");
 		
 		System.out.println("End");
 		
 	}
 
-	public static void swipeleftToRight(AndroidDriver<AndroidElement> driver, Dimension size) {
-		int startY = (int) size.height / 2;
-		int startX = (int) (size.width * 0.02) ; 
-		int endX = (int) (size.width * 0.90) ; 
-		
-		TouchAction act  =  new TouchAction(driver);
-		
-		act.press(PointOption.point(startX, startY))
-		.waitAction(WaitOptions.waitOptions(Duration.ofMillis(250)))
-		.moveTo(PointOption.point(endX, startY)).release().perform();
-	}
-	
-	
-
-	public static void swipeRightToLeft(AndroidDriver<AndroidElement> driver, Dimension size) {
-		int startY = (int) size.height / 2;
-		int startX = (int) (size.width * 0.95) ; 
-		int endX = (int) (size.width * 0.05) ; 
-		
-		TouchAction act  =  new TouchAction(driver);
-		
-		act.press(PointOption.point(startX, startY))
-		.waitAction(WaitOptions.waitOptions(Duration.ofSeconds(2)))
-		.moveTo(PointOption.point(endX, startY)).release().perform();
-	}
-
-	
-	public static void swipeTopToBottom(AndroidDriver<AndroidElement> driver, Dimension size) {
-		int startx = (int) size.width / 2;
-		int starty = (int) (size.height * 0.05); 
-		int endy = (int) (size.width * 0.95) ; 
-		
-		TouchAction act  =  new TouchAction(driver);
-		
-		act.press(PointOption.point(startx, starty))
-		.waitAction(WaitOptions.waitOptions(Duration.ofSeconds(2)))
-		.moveTo(PointOption.point(startx, endy)).release().perform();
-	}
-	
-	public static void swipeBottomToTop(AndroidDriver<AndroidElement> driver, Dimension size) {
-		int startx = (int) size.width / 2;
-		int starty = (int) (size.height * 0.95); 
-		int endy = (int) (size.width * 0.05) ; 
-		
-		TouchAction act  =  new TouchAction(driver);
-		
-		act.press(PointOption.point(startx, starty))
-		.waitAction(WaitOptions.waitOptions(Duration.ofSeconds(2)))
-		.moveTo(PointOption.point(startx, endy)).release().perform();
-	}
 	
 	
 	
